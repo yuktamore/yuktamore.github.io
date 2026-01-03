@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>yuktamore@portfolio:~$</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <div class="terminal">
+        <div class="terminal-header">
+            <span class="btn btn-close"></span>
+            <span class="btn btn-minimize"></span>
+            <span class="btn btn-maximize"></span>
+            <span class="terminal-title">yuktamore@portfolio:~</span>
+        </div>
+        <div class="terminal-body" id="output">
+            <div class="output-line">Welcome to my portfolio terminal!</div>
+            <div class="output-line">Type <span class="command">help</span> to see available commands.</div>
+            <div class="output-line"></div>
+            <div class="input-line">
+                <span class="prompt">yuktamore@portfolio:~$</span>
+                <input type="text" id="terminal-input" autofocus autocomplete="off">
+            </div>
+        </div>
+
+        <div class="terminal-footer">
+            <div class="footer-left">
+                <div>Crafted with <span class="heart">♥</span> and coffee</div>
+                <div class="footer-links">
+                    <a href="https://github.com/yuktamore" target="_blank" class="footer-link" title="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yuktamore/" target="_blank" class="footer-link"
+                        title="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                    <a href="https://x.com/yuktavm" target="_blank" class="footer-link" title="Twitter">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:yuktamore05@gmail.com" class="footer-link" title="Email">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <span class="datetime" id="datetime"></span>
+            </div>
+        </div>
+
+
+        <script>
+            const output = document.getElementById('output');
+            const input = document.getElementById('terminal-input');
+            const commands = {
+                help: () => `Available commands:
+  <span class="command">about</span>    - Learn about me
+  <span class="command">skills</span>   - View my skills
+  <span class="command">projects</span> - See my projects
+  <span class="command">education</span>  - Educational background
+  <span class="command">contact</span>  - Get in touch
+  <span class="command">clear</span>    - Clear the terminal
+  <span class="command">help</span>     - Show this help message`,
+
+                about: () => `About Me:
+Hi! I write backend code for banks, which means precision, performance, and zero tolerance for bugs.
+Currently building serious systems at Oracle Financial Services while casually exploring data, cloud, and scalable architectures.
+I love working with modern technologies and building interactive applications.`,
+
+                skills: () => `Technical Skills:
+• Languages: Java, Python, HTML, CSS
+• Frameworks: React, Node.js, Express
+• Tools: Git, Docker, VS Code
+• Databases: MongoDB, PostgreSQL, MySQL
+• Cloud: AWS, Azure
+• Other: RESTful APIs, Microservices, Agile Methodologies`,
+
+                projects: () => `Recent Projects:
+1. Portfolio Website - This terminal interface!`,
+
+                education: () => `Educational Background:
+• B.Tech in Computer Science and Engineering
+  - International Institute of Information Technology(I²IT), Pune
+  - Graduated: 2022
+  - Honors: Data Science`,
+
+                contact: () => `Contact Information:
+• Email: yuktamore05@gmail.com
+• GitHub: <a href="https://github.com/yuktamore" target="_blank">github.com/yourusername</a>
+• LinkedIn: <a href="https://www.linkedin.com/in/yuktamore/" target="_blank">linkedin.com/in/yourprofile</a>`,
+
+                clear: () => 'CLEAR_SCREEN'
+            };
+
+            function addOutput(text, className = '') {
+                const line = document.createElement('div');
+                line.className = `output-line ${className}`;
+                line.innerHTML = text;
+                output.insertBefore(line, output.lastElementChild);
+                output.scrollTop = output.scrollHeight;
+            }
+
+            function executeCommand(cmd) {
+                const trimmedCmd = cmd.trim().toLowerCase();
+
+                addOutput(`<span class="prompt">yuktamore@portfolio:~$</span> <span class="command">${cmd}</span>`);
+
+                if (trimmedCmd === '') {
+                    return;
+                }
+
+                if (commands[trimmedCmd]) {
+                    const result = commands[trimmedCmd]();
+                    if (result === 'CLEAR_SCREEN') {
+                        const inputLine = output.lastElementChild;
+                        output.innerHTML = '';
+                        output.appendChild(inputLine);
+                    } else {
+                        addOutput(result, 'success');
+                    }
+                } else {
+                    addOutput(`Command not found: ${cmd}. Type <span class="command">help</span> for available commands.`, 'error');
+                }
+
+                addOutput('');
+            }
+
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const cmd = input.value;
+                    executeCommand(cmd);
+                    input.value = '';
+                }
+            });
+
+            document.addEventListener('click', () => {
+                input.focus();
+            });
+
+            // Update date and time
+            function updateDateTime() {
+                const now = new Date();
+                const day = String(now.getDate()).padStart(2, '0');
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                const year = now.getFullYear();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+
+                document.getElementById('datetime').textContent = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+            }
+
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+        </script>
+
+</html>
